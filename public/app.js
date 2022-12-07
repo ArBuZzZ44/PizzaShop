@@ -1,4 +1,10 @@
 function something()
 	{
-		alert('Hello!!!');
-	}
+	
+	localStorage.setItem('myKey', 'Ooops'); 
+
+	var x = localStorage.getItem('myKey');
+	
+	alert(x);
+
+ 	}
