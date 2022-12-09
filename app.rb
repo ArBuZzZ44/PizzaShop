@@ -14,5 +14,5 @@ get '/' do
 end
 
 get '/about' do
-	erb :about	
+	erb 
 end
