@@ -14,6 +14,9 @@ function something()
  function add_to_cart(id)
 	{
 
-	alert("You added pizza" + id);
+		var key = "product_" + id;
+		var x = localStorage.getItem(key);
+		x = x * 1 + 1;
+		localStorage.setItem(key, x);
 
  	}
