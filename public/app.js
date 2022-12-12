@@ -22,6 +22,7 @@ function something()
 		alert("There are " + get_cart_quantity() + " pizzas in your cart");
 
 		update_orders_input();
+		update_orders_button();
  	}
 
  function update_orders_input()
@@ -29,6 +30,13 @@ function something()
  		var orders = cart_get_orders();
  		$("#orders_input").val(orders);
  	}
+
+function update_orders_button()
+	{
+		var text = "Cart (" + get_cart_quantity() + ")";
+		$("#orders_button").val(text);
+
+	}
 
 function get_cart_quantity()
 	{
