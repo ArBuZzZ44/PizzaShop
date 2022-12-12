@@ -20,6 +20,14 @@ function something()
 		localStorage.setItem(key, x);
 
 		alert("There are " + get_cart_quantity() + " pizzas in your cart");
+
+		update_orders_input();
+ 	}
+
+ function update_orders_input()
+ 	{
+ 		var orders = cart_get_orders();
+ 		$("#orders_input").val(orders);
  	}
 
 function get_cart_quantity()
@@ -55,3 +63,4 @@ function cart_get_orders()
 		}
 		return orders;
 	}
+
