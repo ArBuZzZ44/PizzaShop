@@ -38,3 +38,20 @@ function get_cart_quantity()
 		}
 		return cnt;
 	}
+
+function cart_get_orders()
+	{
+		var orders = "";
+
+		for(var i = 0; i < localStorage.length; i++)
+		{
+			var key = localStorage.key(i); // получаем ключ
+			var value = localStorage.getItem(key); //получаем значение
+
+			if(key.indexOf("product_") == 0)
+			{
+				orders = orders + key + "=" + value + ",";
+			}
+		}
+		return orders;
+	}
