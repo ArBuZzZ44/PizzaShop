@@ -19,5 +19,5 @@ get '/about' do
 end
 
 post '/cart' do 
-	
+	@products = Product.all
 end
