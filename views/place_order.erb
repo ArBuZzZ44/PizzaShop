@@ -1,1 +1,14 @@
 <h1>Спасибо! заказ принят</h1>
+
+
+	<% @orders.each do |order| %>
+		<p>
+			Order number: <%= order.id %>
+			Name: <%= order.name %>,
+			Phone: <%= order.phone %>,
+			Delivery address: <%= order.address %>,
+			Cart: <%= order.orders_input %>
+		</p>
+		<hr />
+
+	<% end %>

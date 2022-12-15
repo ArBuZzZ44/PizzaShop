@@ -56,4 +56,6 @@ end
 post '/place_order' do
 	@o = Order.new params[:order]
 	@o.save
+	@orders = Order.all
+	erb :place_order
 end
