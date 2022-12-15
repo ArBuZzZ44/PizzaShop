@@ -52,3 +52,8 @@ def parse_orders_input orders_input
 
 	return arr
 end
+
+post '/place_order' do
+	@o = Order.new params[:order]
+	@o.save
+end
