@@ -10,6 +10,9 @@ class Product < ActiveRecord::Base
 end
 
 class Order < ActiveRecord::Base
+	validates :name, presence: true
+	validates :phone, presence: true
+	validates :address, presence: true
 end
 
 get '/' do
@@ -28,6 +31,7 @@ post '/cart' do
 		item[0] = Product.find(item[0])
 	end
 
+	@o = Order.new params[:order]
 
 	erb :cart
 end
@@ -54,8 +58,19 @@ def parse_orders_input orders_input
 end
 
 post '/place_order' do
+	@orders_input = params[:orders]
+	@items = parse_orders_input @orders_input
+	@items.each do |item| 
+		item[0] = Product.find(item[0])
+	end
+
 	@o = Order.new params[:order]
-	@o.save
+	if @o.save
+		erb :place_order
+	else
+		@error = @o.errors.full_messages.first
+		erb :cart
+	end
+
 	@orders = Order.all
-	erb :place_order
 end
