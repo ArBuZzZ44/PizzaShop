@@ -72,11 +72,3 @@ function cart_get_orders()
 		return orders;
 	}
 
-function cancel_order()
-	{
-		localStorage.clear();
-		return false;
-
-		update_orders_input();
-		update_orders_button();
-	}
