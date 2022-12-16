@@ -31,9 +31,17 @@ post '/cart' do
 		item[0] = Product.find(item[0])
 	end
 
-	@o = Order.new params[:order]
-
 	erb :cart
+end
+
+post '/place_order' do
+
+	@o = Order.new params[:order]
+	@o.save
+
+	@orders = Order.all
+
+	erb :place_order
 end
 
 def parse_orders_input orders_input
@@ -55,22 +63,4 @@ def parse_orders_input orders_input
 	end
 
 	return arr
-end
-
-post '/place_order' do
-	@orders_input = params[:orders]
-	@items = parse_orders_input @orders_input
-	@items.each do |item| 
-		item[0] = Product.find(item[0])
-	end
-
-	@o = Order.new params[:order]
-	if @o.save
-		erb :place_order
-	else
-		@error = @o.errors.full_messages.first
-		erb :cart
-	end
-
-	@orders = Order.all
 end
