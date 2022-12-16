@@ -45,7 +45,7 @@ post '/place_order' do
   	
 	
 
-	@orders = Order.all
+	@orders = Order.order ('created_at DESC')
 
 	erb :place_order
 end
